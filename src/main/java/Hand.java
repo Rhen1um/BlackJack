@@ -9,7 +9,14 @@ public class Hand {
 
     private List<Card> cards;
 
-    Hand(List<Card> cards) {
+    /**
+     * constructor with no parameters.
+     */
+    public Hand(){
+
+    }
+
+    public Hand(List<Card> cards) {
         this.cards = cards;
     }
 
@@ -19,6 +26,15 @@ public class Hand {
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    /**
+     * @author JJAYCHEN
+     * Add a new card to the hand.
+     * @param card the new card to be added.
+     */
+    public void addCard(Card card){
+        cards.add(card);
     }
 
     public int calculateValue(){
