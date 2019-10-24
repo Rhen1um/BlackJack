@@ -5,8 +5,12 @@
 public class Dealer {
     Hand hand;
 
-    public void autoHit(){
+    public void createHand(){
         
+    }
+
+    public void autoHit(){
+
     }
 
     public void clearHand() {
