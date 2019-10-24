@@ -16,6 +16,10 @@ public class PlayerHand extends Hand {
         this.bet = bet;
     }
 
+    PlayerHand(int bet) {
+        this.bet = bet;
+    }
+
     public int getBet() {
         return bet;
     }
