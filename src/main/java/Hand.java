@@ -53,6 +53,6 @@ public class Hand {
     public boolean isBurst(){
         return calculateValue() > 21;
     }
-    
+
 
 }
