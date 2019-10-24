@@ -29,6 +29,11 @@ public class Dealer {
         hand = new Hand(cardList);
     }
 
+    /**
+     * The dealer is operated by computer. We need autoHit
+     * to automatically choose whether hit or not.
+     * This should be called by BlackJackGame class.
+     */
     public void autoHit() {
         while (hand.calculateValue() < 17) {
             // TODO: get a card from the Deck through BlackJackGame
@@ -37,6 +42,9 @@ public class Dealer {
         }
     }
 
+    /**
+     * After a round of game, we should clear the hand.
+     */
     public void clearHand() {
         hand = null;
     }
