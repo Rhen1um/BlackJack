@@ -37,6 +37,11 @@ public class Hand {
         cards.add(card);
     }
 
+    /**
+     * @author HavenTong
+     * Calculate the sum value of Hand
+     * @return
+     */
     public int calculateValue(){
         int sum = 0;
         int aceNum = 0;
@@ -60,12 +65,22 @@ public class Hand {
         return sum;
     }
 
+    /**
+     * @author HavenTong
+     * judge whether the hand is BlackJack
+     * @return
+     */
     public boolean isBlackJack(){
         if (cards.size() != 2) return false;
         int sum = calculateValue();
         return sum == 21;
     }
 
+    /**
+     * @author HavenTong
+     * judge whether it is burst
+     * @return
+     */
     public boolean isBurst(){
         return calculateValue() > 21;
     }

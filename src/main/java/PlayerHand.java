@@ -1,10 +1,14 @@
 import java.util.List;
 
+/**
+ * The result of a hand (win or lose or draw)
+ */
 enum Result{
     LOSE, WIN, DRAW
 }
 /**
  * @author HavenTong
+ * The hand of Player
  * @date 2019-10-24 16:21
  */
 public class PlayerHand extends Hand {
