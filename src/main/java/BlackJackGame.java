@@ -27,6 +27,7 @@ public class BlackJackGame {
     }
 
     /**
+     * @author HavenTong
      * compare playerHands with Dealer's hand and judge the result
      * @return
      */
@@ -65,7 +66,8 @@ public class BlackJackGame {
     }
 
     /**
-     * 从牌堆拿牌
+     * @author HavenTong
+     * get card from the deck
      */
     public Card getCard(){
         return deck.deal();
