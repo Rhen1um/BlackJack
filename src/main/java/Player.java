@@ -19,12 +19,34 @@ public class Player {
         currentHand = 0;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void addMoney(int money) {
+        this.money += money;
+    }
+
+    // if the money is not enough, then return false.
+    private boolean cutMoney(int money) {
+        if(this.money - money < 0) {
+            return false;
+        }
+        this.money -= money;
+        return true;
+    }
+
     public PlayerHand[] getPlayerHands() {
         return playerHands;
     }
 
-    public void addHand(int bet) {
-        playerHands[handCount++] = new PlayerHand(bet);
+    // if the money is not enough, return false and don's add hand.
+    public boolean addHand(int bet) {
+        if(cutMoney(bet)) {
+            playerHands[handCount++] = new PlayerHand(bet);
+            return true;
+        }
+        return false;
     }
 
     public void stay() {
