@@ -34,10 +34,10 @@ public class Dealer {
      * to automatically choose whether hit or not.
      * This should be called by BlackJackGame class.
      */
-    public void autoHit() {
+    public void autoHit(BlackJackGame blackJackGame) {
         while (hand.calculateValue() < 17) {
             // TODO: get a card from the Deck through BlackJackGame
-            Card card = BlackJackGame.getCard();
+            Card card = blackJackGame.getCard();
             hand.addCard(card);
         }
     }

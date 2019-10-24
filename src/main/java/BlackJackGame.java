@@ -28,15 +28,47 @@ public class BlackJackGame {
 
     /**
      * compare playerHands with Dealer's hand and judge the result
-     * @param playerHands
      * @return
      */
-    public Result judgeResult(Hand[] playerHands){
-        return Result.DRAW;
+    public void judgeResult(){
+        Hand dealerHand = dealer.getHand();
+        PlayerHand[] playerHands = player.getPlayerHands();
+        Result result;
+        if (!dealerHand.isBlackJack()){
+            for (int i = 0 ; i < playerHands.length; i++){
+                /* player BlackJack */
+                if (playerHands[i].isBlackJack()){
+                    result = Result.WIN;
+                } else {
+                    int playerValue = playerHands[i].calculateValue();
+                    int dealerValue = dealerHand.calculateValue();
+                    if (playerValue > dealerValue){
+                        result = Result.WIN;
+                    } else if (playerValue < dealerValue){
+                        result = Result.LOSE;
+                    } else {
+                        result = Result.DRAW;
+                    }
+                }
+                playerHands[i].setResult(result);
+            }
+        } else {
+            for (int i = 0; i < playerHands.length; i++){
+                if (playerHands[i].isBlackJack()){
+                    result = Result.DRAW;
+                } else {
+                    result = Result.LOSE;
+                }
+                playerHands[i].setResult(result);
+            }
+        }
     }
 
+    /**
+     * 从牌堆拿牌
+     */
     public Card getCard(){
-        return new Card(1,Suit.Club);
+        return deck.deal();
     }
 
 
