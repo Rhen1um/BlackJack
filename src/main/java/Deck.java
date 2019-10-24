@@ -34,15 +34,11 @@ public class Deck {
     public Card deal() {
         Random random = new Random();
         int randomCard = random.nextInt(52);
+        while(!isValid[randomCard]) {
+            randomCard++;
+            randomCard %= 52;
+        }
         isValid[randomCard] = false;
         return cards[randomCard];
     }
-
-    //
-    public static void main(String[] args) {
-        Deck deck = new Deck();
-        System.out.println(deck.deal().toString());
-        System.out.println(deck.deal().toString());
-    }
-
 }
