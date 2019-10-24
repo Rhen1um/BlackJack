@@ -9,7 +9,7 @@ enum Result{
  */
 public class PlayerHand extends Hand {
     private int bet;
-    private int result;
+    private Result result;
 
     public PlayerHand(List<Card> cards, int bet) {
         super(cards);
@@ -28,11 +28,11 @@ public class PlayerHand extends Hand {
         this.bet = bet;
     }
 
-    public int getResult() {
+    public Result getResult() {
         return result;
     }
 
-    public void setResult(int result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
