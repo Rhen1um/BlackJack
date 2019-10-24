@@ -13,6 +13,6 @@ public class GamblingHouse {
     public static void main(String[] args) {
         GameView gameView = new GameView();
         GamblingHouse gamblingHouse = new GamblingHouse(gameView);
-        
+
     }
 }

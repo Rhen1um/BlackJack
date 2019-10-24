@@ -40,7 +40,10 @@ public class Player {
         return playerHands;
     }
 
-    // if the money is not enough, return false and don's add hand.
+    /**
+     * @param bet is the bet for this hand.
+     * @return if is false, it shows that money is not enough, and don't add a hand.
+     */
     public boolean addHand(int bet) {
         if(cutMoney(bet)) {
             playerHands[handCount++] = new PlayerHand(bet);
@@ -49,10 +52,16 @@ public class Player {
         return false;
     }
 
+    /**
+     * skip to next hand.
+     */
     public void stay() {
         currentHand++;
     }
 
+    /**
+     * add a card in the current hand.
+     */
     public void hit(Card card) {
         playerHands[currentHand].addCard(card);
     }
