@@ -1,4 +1,9 @@
 /**
+ * @author  JJAYCHEN
+ * @date  2019-10-24 17:08
+ */
+
+/**
  * Spade: ♠, Heart: ♥, Diamond: ♦, Club: ♣
  */
 enum Suit {

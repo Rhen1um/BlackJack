@@ -22,14 +22,37 @@ public class Hand {
     }
 
     public int calculateValue(){
-        return 0;
+        int sum = 0;
+        int aceNum = 0;
+        for (Card card : cards){
+            int value = card.getValue();
+            if (value > 10){
+                value = 10;
+            } else if (value == 1){
+                aceNum++;
+                value = 11;
+            }
+            sum += value;
+        }
+        while (aceNum > 0){
+            if (sum > 21){
+                sum -= 10;
+                aceNum--;
+             } else
+                 break;
+        }
+        return sum;
     }
 
     public boolean isBlackJack(){
-        return false;
+        if (cards.size() != 2) return false;
+        int sum = calculateValue();
+        return sum == 21;
     }
 
     public boolean isBurst(){
-        return false;
+        return calculateValue() > 21;
     }
+
+
 }
