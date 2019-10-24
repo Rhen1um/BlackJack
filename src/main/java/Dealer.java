@@ -32,7 +32,7 @@ public class Dealer {
     public void autoHit() {
         while (hand.calculateValue() < 17) {
             // TODO: get a card from the Deck through BlackJackGame
-            Card card = BlackJackGame.getCard;
+            Card card = BlackJackGame.getCard();
             hand.addCard(card);
         }
     }
