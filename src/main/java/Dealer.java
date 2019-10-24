@@ -42,6 +42,9 @@ public class Dealer {
         }
     }
 
+    /**
+     * After a round of game, we should clear the hand.
+     */
     public void clearHand() {
         hand = null;
     }
