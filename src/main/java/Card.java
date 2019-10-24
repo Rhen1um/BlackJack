@@ -17,8 +17,6 @@ public class Card {
     private Suit suit;
 
     /**
-     * Constructor
-     *
      * @param value value of the card.
      * @param suit  suit of the card.
      */
@@ -28,13 +26,22 @@ public class Card {
     }
 
     /**
+     * get the complete string description of a card.
      * example: "♠ Spade Jack", "♠ Spade 10".
+     *
      * @return a complete string represents the card.
      */
     @Override
     public String toString() {
-        // TODO: toString method.
-        return getCardSuitAsCharacter() + " " + getCardSuitName() + " " + getCardName();
+        return getSuitAsCharacter() + " " + getSuitName() + " " + getCardName();
+    }
+
+    /**
+     * the same as toString()
+     * @return a complete string represents the card.
+     */
+    public String getCardDescription(){
+        return this.toString();
     }
 
     /**
@@ -79,18 +86,20 @@ public class Card {
 
     /**
      * get the name of the suit of card by using suit.toString.
+     *
      * @return the name of the suit of a card.
      */
-    public String getCardSuitName(){
+    public String getSuitName() {
         return suit.toString();
     }
 
     /**
      * Spade: ♠, Heart: ♥, Diamond: ♦, Club: ♣
+     *
      * @return a character represents the suit.
      */
-    public String getCardSuitAsCharacter(){
-        switch(suit){
+    public String getSuitAsCharacter() {
+        switch (suit) {
             //Spade: ♠, Heart: ♥, Diamond: ♦, Club: ♣
             case Spade:
                 return "♠";
