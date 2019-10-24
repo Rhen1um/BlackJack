@@ -11,6 +11,10 @@ public class Dealer {
      */
     Hand hand;
 
+    public Hand getHand() {
+        return hand;
+    }
+
     /**
      * Provide two initial cards, and create a new
      * hand based on them.
