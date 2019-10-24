@@ -22,7 +22,7 @@ public class Player {
     }
 
     public void addHand() {
-        
+        PlayerHand[handCount++] = new PlayerHand();
     }
 
     public void hit() {
