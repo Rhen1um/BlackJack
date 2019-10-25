@@ -86,4 +86,12 @@ public class Hand {
     }
 
 
+    public String[] getCardsString() {
+        int size = cards.size();
+        String[] cardString = new String[size];
+        for (int i = 0; i < cardString.length; i++){
+            cardString[i] = cards.get(i).toString();
+        }
+        return cardString;
+    }
 }
