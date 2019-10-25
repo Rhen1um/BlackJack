@@ -13,6 +13,7 @@ public class GameView {
      */
     public void printWelcomeInformation() {
         System.out.println("Welcome to BlackJack!");
+        System.out.println("===================================================");
     }
 
     /**
@@ -50,18 +51,20 @@ public class GameView {
     /**
      * get the bet value from console. No constrains whether
      * the values is out of range. Just make sure it returns
-     * a non-negative int.
+     * a non-negative int(0 or LARGER than 100).
      *
-     * @return an int value represents the bet.
+     * @param index use index to indicate user we are asking for which hand.
+     * @return an int value represents the bet. 0 represents give up this hand.
      */
     public int getBetValue(int index) {
         while (true) {
             try {
-                System.out.println("Enter bet:");
+                System.out.println("Enter bet for hand" + index + "(at least 100):");
                 System.out.println("(You can input 0 to skip all left hands)");
                 int i = s.nextInt();
-                if (i < 0) {
-                    System.out.println("Please input a non-negative value.");
+                if (i < 0 || i != 0 && i < 100) {
+                    System.out.println("Please input a non-negative value(at least 100).");
+                    System.out.println("(You can input 0 to skip all left hands)");
                     continue;
                 }
                 return i;
@@ -76,6 +79,7 @@ public class GameView {
      * It will tell the player how much they have now and ask for a new value.
      *
      * @param currentBalance the current balance value that player holds.
+     * @param index          use index to indicate user we are asking for which hand.
      * @return a new bet value.
      */
     public int printBetOutOfRangeAndGetANewBetValue(int currentBalance, int index) {
@@ -84,22 +88,63 @@ public class GameView {
         return getBetValue(index);
     }
 
-    /**
-     *
-     * @param dealerCards a String array that contains the descriptions of initial cards of dealer.
-     * @param playerCards a String array that contains the descriptions of initial cards of player.
-     * @param handIndex the index of handler
-     */
-    public void printNewHand(String[] dealerCards, String[] playerCards, int handIndex) {
-        System.out.println("Hand" + handIndex + ":");
-        System.out.println("Dealer:");
-        System.out.println(" Hidden\n " + dealerCards[1]);
-        System.out.println("Player:");
-        System.out.println(" " + playerCards[0] + "\n " + playerCards[1]);
-    }
-
-//    public boolean getHitOrStay() {
+    // TODO: if user skip the first hand...?
+//    public int printAtLeastOneBetRequired(int index) {
 //
 //    }
 
+    /**
+     * @param dealerCards a String array that contains the descriptions of initial cards of dealer.
+     * @param playerCards a String array that contains the descriptions of initial cards of player.
+     * @param handIndex   the index of handler
+     */
+    public void printNewHand(String[] dealerCards, String[] playerCards, int handIndex) {
+        System.out.println("Hand" + handIndex + "...");
+        System.out.println("Dealer:");
+        System.out.println(" Hidden\n " + dealerCards[1]);
+        printPlayerHand(playerCards);
+    }
+
+    /**
+     * @param playerCards a String array that contains the descriptions of cards of player.
+     */
+    public void printPlayerHand(String[] playerCards) {
+        System.out.println("Player:");
+        for (String card : playerCards
+        ) {
+            System.out.println(" " + card);
+        }
+    }
+
+    /**
+     *
+     * @param dealerCards
+     */
+    public void printFinalDealerHand(String[] dealerCards){
+        System.out.println("Player:");
+        for (String card : dealerCards
+        ) {
+            System.out.println(" " + card);
+        }
+    }
+
+    /**
+     * ask the user whether hit or stay.
+     *
+     * @return a bool value, true represents "Hit", false represents "Stay"
+     */
+    public boolean getHitOrStay() {
+        while (true) {
+            System.out.println("Hit or stay:");
+            String answer = s.next();
+            if (answer.toLowerCase().equals("hit")) {
+                return true;
+            } else if (answer.toLowerCase().equals("stay")) {
+                return false;
+            } else {
+                System.out.println("Please input hit or stay:");
+            }
+        }
+    }
+    
 }
