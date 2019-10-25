@@ -50,6 +50,9 @@ public class BlackJackGame {
                     } else {
                         result = Result.DRAW;
                     }
+                    if (playerValue > 21){
+                        result = Result.LOSE;
+                    }
                 }
                 playerHands[i].setResult(result);
             }
@@ -113,9 +116,48 @@ public class BlackJackGame {
 
     }
 
+    /**
+     * judge dealer is BlackJack
+     * @return
+     */
     public boolean dealerIsBlackJack(){
         return dealer.getHand().isBlackJack();
     }
+
+
+    /**
+     * get the results of money in an array
+     * @return
+     */
+    public int[] getPlayerMoneyResults(){
+        int handCount = player.getHandCount();
+        DealerHand dealerHand = (DealerHand) dealer.getHand();
+        PlayerHand[] playerHands = new PlayerHand[handCount];
+        int[] moneyResults = new int[handCount];
+        judgeResult();
+        for (int i = 0; i < playerHands.length; i++){
+            Result result = playerHands[i].getResult();
+            int betResult = playerHands[i].getBet();
+            switch (result){
+                case WIN:
+                    if (playerHands[i].isBlackJack()){
+                        betResult += 2 * betResult;
+                    } else {
+                        betResult += betResult;
+                    }
+                    break;
+                case LOSE:
+                    betResult = 0;
+                    break;
+                default:
+                    break;
+            }
+            player.addMoney(betResult);
+            moneyResults[i] = betResult;
+        }
+        return moneyResults;
+    }
+
 
 
 }
