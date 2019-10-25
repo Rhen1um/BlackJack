@@ -7,10 +7,10 @@ public class BlackJackGame {
     private Dealer dealer;
     private Player player;
 
-    public BlackJackGame(Deck deck, Dealer dealer, Player player) {
-        this.deck = deck;
-        this.dealer = dealer;
-        this.player = player;
+    public BlackJackGame() {
+        this.deck = new Deck();
+        this.dealer = new Dealer();
+        this.player = new Player();
     }
 
     public Deck getDeck() {

@@ -11,6 +11,10 @@ public class Dealer {
      */
     Hand hand;
 
+    public Dealer(){
+
+    }
+
     public Hand getHand() {
         return hand;
     }
