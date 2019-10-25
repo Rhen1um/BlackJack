@@ -5,14 +5,20 @@
  */
 public class GamblingHouse {
     private GameView gameView;
+    private BlackJackGame blackJackGame;
 
-    GamblingHouse(GameView gameView) {
+    GamblingHouse() {
+        gameView = new GameView();
         this.gameView = gameView;
     }
 
+    public void createGame() {
+        blackJackGame = new BlackJackGame();
+    }
+
+
     public static void main(String[] args) {
-        GameView gameView = new GameView();
-        GamblingHouse gamblingHouse = new GamblingHouse(gameView);
-        
+        GamblingHouse gamblingHouse = new GamblingHouse();
+
     }
 }
