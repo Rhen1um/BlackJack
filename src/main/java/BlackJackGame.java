@@ -83,5 +83,19 @@ public class BlackJackGame {
     }
 
 
+    public void initDeal(){
+        Card dealerFirstCard = deck.deal();
+        Card dealerSecondCard = deck.deal();
+        dealer.createHand(dealerFirstCard, dealerSecondCard);
+        PlayerHand[] playerHands = player.getPlayerHands();
+        for (int i = 0; i < playerHands.length; i++){
+            Card playerFirstCard = deck.deal();
+            Card playerSecondCard = deck.deal();
+            playerHands[i].addCard(playerFirstCard);
+            playerHands[i].addCard(playerSecondCard);
+        }
+    }
+
+
 
 }
