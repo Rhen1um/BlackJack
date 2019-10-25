@@ -9,13 +9,13 @@ public class Dealer {
     /**
      * the hand that dealer holds.
      */
-    Hand hand;
+    DealerHand hand;
 
     public Dealer(){
 
     }
 
-    public Hand getHand() {
+    public DealerHand getHand() {
         return hand;
     }
 
@@ -30,7 +30,7 @@ public class Dealer {
         List<Card> cardList = new ArrayList<Card>();
         cardList.add(firstCard);
         cardList.add(secondCard);
-        hand = new Hand(cardList);
+        hand = new DealerHand(cardList);
     }
 
     /**
