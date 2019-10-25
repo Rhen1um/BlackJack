@@ -22,7 +22,7 @@ public class GameView {
      * @param balance
      */
     public void printTheBalanceOfPlayer(int balance) {
-        System.out.println("You have $" + balance + "now.");
+        System.out.println("      You have $" + balance + "now.");
     }
 
     /**
@@ -30,7 +30,7 @@ public class GameView {
      *
      * @param value how much player wins
      */
-    public void printWinBet(int value) {
+    private void printWinBet(int value) {
         System.out.println("You win $" + value + ".");
     }
 
@@ -39,8 +39,8 @@ public class GameView {
      *
      * @param value how much player loses
      */
-    public void printLoseBet(int value) {
-        System.out.println("You lose $" + value + ".");
+    private void printLoseBet(int value) {
+        System.out.println("      You lose $" + value + ".");
     }
 
     /**
@@ -185,11 +185,21 @@ public class GameView {
     /**
      * Called when dealer gets BlackJack.
      */
-    public void printDealerGetsBlackJack(){
+    public void printDealerGetsBlackJack() {
         System.out.println("Dealer gets BlackJack!");
     }
 
-    public void printResult(){
-
+    /**
+     * print the result of each hand and print the current balance.
+     * @param result
+     * @param currentBalance
+     */
+    public void printTheResultOfGame(int[] result, int currentBalance) {
+        for (int i = 0; i < result.length; i++) {
+            System.out.println("Hand " + (i + 1) + ":");
+            if (result[i] < 0) printLoseBet(result[i]);
+            else printWinBet(result[i]);
+        }
+        printTheBalanceOfPlayer(currentBalance);
     }
 }
