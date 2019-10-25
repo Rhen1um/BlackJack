@@ -124,7 +124,7 @@ public class BlackJackGame {
 
     /**
      * get the results of money in an array
-     * @return 
+     * @return
      */
     public int[] getPlayerMoneyResults(){
         int handCount = player.getHandCount();
@@ -149,6 +149,7 @@ public class BlackJackGame {
                 default:
                     break;
             }
+            player.addMoney(betResult);
             moneyResults[i] = betResult;
         }
         return moneyResults;
