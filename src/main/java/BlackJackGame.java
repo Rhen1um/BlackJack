@@ -73,5 +73,9 @@ public class BlackJackGame {
         return deck.deal();
     }
 
+    public boolean addHand(int bet){
+        return player.addHand(bet);
+    }
+    
 
 }
