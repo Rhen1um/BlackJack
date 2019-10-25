@@ -9,6 +9,13 @@ public class Player {
     private int handCount;
     private int currentHand;
 
+
+
+    public int getHandCount() {
+        return handCount;
+    }
+
+
     /**
      * Player's init money is 1000
      */
