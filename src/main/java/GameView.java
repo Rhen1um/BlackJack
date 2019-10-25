@@ -139,7 +139,7 @@ public class GameView {
      *
      * @param dealerCards a String array that contains the descriptions of cards of dealer.
      */
-    public void printFinalDealerHand(String[] dealerCards) {
+    public void printDealerHand(String[] dealerCards) {
         System.out.println("Dealer:");
         for (String card : dealerCards
         ) {
@@ -180,5 +180,16 @@ public class GameView {
      */
     public void printPlayerGetsBlackJack() {
         System.out.println("☻Congratulations! You got a BlackJack!");
+    }
+
+    /**
+     * Called when dealer gets BlackJack.
+     */
+    public void printDealerGetsBlackJack(){
+        System.out.println("Dealer gets BlackJack!");
+    }
+
+    public void printResult(){
+
     }
 }
