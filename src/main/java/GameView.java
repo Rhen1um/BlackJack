@@ -9,19 +9,23 @@ public class GameView {
     Scanner s = new Scanner(System.in);
 
     /**
-     * print the welcome information. called when the game stars.
+     * print the welcome information. Called when the game starts.
      */
     public void printWelcomeInformation() {
         System.out.println("Welcome to BlackJack!");
     }
 
-
+    /**
+     * print the balance of player.
+     *
+     * @param balance
+     */
     public void printTheBalanceOfPlayer(int balance) {
         System.out.println("You have $" + balance + "now.");
     }
 
     /**
-     * Called when the game stars, ask the plays how many hands
+     * Called when the game starts, ask the plays how many hands
      * they want to hold. It returns a value between 1 and 5.
      *
      * @return the number of hands that the player wants to hold.
@@ -50,7 +54,7 @@ public class GameView {
      *
      * @return an int value represents the bet.
      */
-    public int getBetValue() {
+    public int getBetValue(int index) {
         while (true) {
             try {
                 System.out.println("Enter bet:");
@@ -74,9 +78,28 @@ public class GameView {
      * @param currentBalance the current balance value that player holds.
      * @return a new bet value.
      */
-    public int printBetOutOfRangeAndGetANewBetValue(int currentBalance) {
+    public int printBetOutOfRangeAndGetANewBetValue(int currentBalance, int index) {
         System.out.println("You do not have enough money! Please enter a valid value again.");
         printTheBalanceOfPlayer(currentBalance);
-        return getBetValue();
+        return getBetValue(index);
     }
+
+    /**
+     *
+     * @param dealerCards a String array that contains the descriptions of initial cards of dealer.
+     * @param playerCards a String array that contains the descriptions of initial cards of player.
+     * @param handIndex the index of handler
+     */
+    public void printNewHand(String[] dealerCards, String[] playerCards, int handIndex) {
+        System.out.println("Hand" + handIndex + ":");
+        System.out.println("Dealer:");
+        System.out.println(" Hidden\n " + dealerCards[1]);
+        System.out.println("Player:");
+        System.out.println(" " + playerCards[0] + "\n " + playerCards[1]);
+    }
+
+//    public boolean getHitOrStay() {
+//
+//    }
+
 }
