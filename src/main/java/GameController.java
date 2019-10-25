@@ -13,12 +13,10 @@ public class GameController {
     }
 
     public void startGame() {
-        while (true) {
-            this.playGame();
-        }
+        while (this.playGame());
     }
 
-    private void playGame() {
+    private boolean playGame() {
         gameView.printWelcomeInformation();
         gameView.printTheBalanceOfPlayer(blackJackGame.getPlayer().getMoney());
         int numberOfHands = gameView.getNumberOfHands();
@@ -35,31 +33,50 @@ public class GameController {
         blackJackGame.initDeal();
         numberOfHands = blackJackGame.getPlayer().getHandCount();
         PlayerHand[] playerHands = blackJackGame.getPlayer().getPlayerHands();
+        //庄家是bj
         if(blackJackGame.dealerIsBlackJack()) {
             gameView.printDealerGetsBlackJack();
-            gameView.printDealerHand(blackJackGame.getDealer().getHand().getCardsString());
-            for(int i = 0; i < numberOfHands; i++) {
-                gameView.printPlayerHand(playerHands[i].getCardsString());
-            }
-            //TODO
-
         }
+        //庄家不是bj
         else {
             for(int i = 0; i < numberOfHands; i++) {
                 String[] dealHandCards = blackJackGame.getDealer().getHand().getCardsString();
                 String[] playHandCards = playerHands[i].getCardsString();
                 gameView.printNewHand(dealHandCards, playHandCards, i + 1);
-                //TODO
+                //玩家是bj
+                if(playerHands[i].isBlackJack()) {
+                    gameView.printPlayerGetsBlackJack();
+                    continue;
+                }
+
+                //玩家不是bj
                 boolean hit = true;
                 while (hit) {
                     hit = gameView.getHitOrStay();
                     blackJackGame.hitOrStay(hit);
                     playHandCards = playerHands[i].getCardsString();
                     gameView.printPlayerHand(playHandCards);
+                    if(playerHands[i].isBurst()) {
+                        gameView.printPlayerBurst(playerHands[i].calculateValue());
+                        break;
+                    }
                 }
             }
-            //TODO
+            blackJackGame.getDealer().autoHit(blackJackGame);
         }
+
+
+        gameView.printDealerHand(blackJackGame.getDealer().getHand().getCardsString());
+        for(int i = 0; i < numberOfHands; i++) {
+            gameView.printPlayerHand(playerHands[i].getCardsString());
+        }
+
+        int[] results = blackJackGame.getPlayerMoneyResults();
+        gameView.printTheResultOfGame(results, blackJackGame.getPlayer().getMoney());
+
+        // 问一下是否继续
+        boolean isContinue = gameView.getWhetherStartNextGame(blackJackGame.getPlayer().getMoney());
+        return isContinue;
     }
 
 

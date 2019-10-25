@@ -13,7 +13,7 @@ public class Hand {
      * constructor with no parameters.
      */
     public Hand(){
-
+        cards = new ArrayList<>();
     }
 
     public Hand(List<Card> cards) {

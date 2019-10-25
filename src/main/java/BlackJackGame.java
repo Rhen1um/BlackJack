@@ -36,7 +36,7 @@ public class BlackJackGame {
         PlayerHand[] playerHands = player.getPlayerHands();
         Result result;
         if (!dealerHand.isBlackJack()){
-            for (int i = 0 ; i < playerHands.length; i++){
+            for (int i = 0 ; i < player.getHandCount(); i++){
                 /* player BlackJack */
                 if (playerHands[i].isBlackJack()){
                     result = Result.WIN;
@@ -57,7 +57,7 @@ public class BlackJackGame {
                 playerHands[i].setResult(result);
             }
         } else {
-            for (int i = 0; i < playerHands.length; i++){
+            for (int i = 0; i < player.getHandCount(); i++){
                 if (playerHands[i].isBlackJack()){
                     result = Result.DRAW;
                 } else {
@@ -94,7 +94,7 @@ public class BlackJackGame {
         Card dealerSecondCard = deck.deal();
         dealer.createHand(dealerFirstCard, dealerSecondCard);
         PlayerHand[] playerHands = player.getPlayerHands();
-        for (int i = 0; i < playerHands.length; i++){
+        for (int i = 0; i < player.getHandCount(); i++){
             Card playerFirstCard = deck.deal();
             Card playerSecondCard = deck.deal();
             playerHands[i].addCard(playerFirstCard);
@@ -135,7 +135,7 @@ public class BlackJackGame {
         PlayerHand[] playerHands = new PlayerHand[handCount];
         int[] moneyResults = new int[handCount];
         judgeResult();
-        for (int i = 0; i < playerHands.length; i++){
+        for (int i = 0; i < player.getHandCount(); i++){
             Result result = playerHands[i].getResult();
             int previousResult = playerHands[i].getBet();
             int betResult = playerHands[i].getBet();
