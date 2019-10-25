@@ -96,6 +96,7 @@ public class GameView {
      * called when the bet value is bigger than the balance of the player.
      * It will tell the player how much they have now and ask for a new value.
      * It makes sure that the new bet is no more than current balance.
+     *
      * @param currentBalance the current balance value that player holds.
      * @param index          use index to indicate user we are asking for which hand.
      * @return a new bet value.
@@ -206,5 +207,19 @@ public class GameView {
             else printWinBet(result[i]);
         }
         printTheBalanceOfPlayer(currentBalance);
+    }
+
+    public boolean getWhetherStartNextGame(int currentBalance) {
+        System.out.println("Do you want another round?(y/n)");
+        while (true) {
+            String answer = s.next();
+            if (answer.toLowerCase().equals("y") || answer.toLowerCase().equals("yes")) {
+                return true;
+            } else if (answer.toLowerCase().equals("n") || answer.toLowerCase().equals("no")) {
+                return false;
+            } else {
+                System.out.println("Please input yes or no:");
+            }
+        }
     }
 }
