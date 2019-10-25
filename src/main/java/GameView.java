@@ -26,6 +26,24 @@ public class GameView {
     }
 
     /**
+     * tell play how much he/she wins.
+     *
+     * @param value how much player wins
+     */
+    public void printWinBet(int value) {
+        System.out.println("You win $" + value + ".");
+    }
+
+    /**
+     * tell play how much he/she loses.
+     *
+     * @param value how much player loses
+     */
+    public void printLoseBet(int value) {
+        System.out.println("You lose $" + value + ".");
+    }
+
+    /**
      * Called when the game starts, ask the plays how many hands
      * they want to hold. It returns a value between 1 and 5.
      *
@@ -117,11 +135,12 @@ public class GameView {
     }
 
     /**
+     * Called ONLY WHEN dealer finished. Because it won't hidden thr first card.
      *
-     * @param dealerCards
+     * @param dealerCards a String array that contains the descriptions of cards of dealer.
      */
-    public void printFinalDealerHand(String[] dealerCards){
-        System.out.println("Player:");
+    public void printFinalDealerHand(String[] dealerCards) {
+        System.out.println("Dealer:");
         for (String card : dealerCards
         ) {
             System.out.println(" " + card);
@@ -146,5 +165,20 @@ public class GameView {
             }
         }
     }
-    
+
+    /**
+     * Called when player's hand bursts.
+     *
+     * @param totalValueOfCards the total value of user's hand.
+     */
+    public void printPlayerBurst(int totalValueOfCards) {
+        System.out.println("Boom! You got " + totalValueOfCards + "points(larger than 21.)");
+    }
+
+    /**
+     * Called when player gets BlackJack.
+     */
+    public void printPlayerGetsBlackJack() {
+        System.out.println("☻Congratulations! You got a BlackJack!");
+    }
 }
