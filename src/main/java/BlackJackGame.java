@@ -73,9 +73,15 @@ public class BlackJackGame {
         return deck.deal();
     }
 
+    /**
+     * @author HavenTong
+     * @param bet The bet of the current hand
+     * @return
+     */
     public boolean addHand(int bet){
         return player.addHand(bet);
     }
-    
+
+
 
 }
