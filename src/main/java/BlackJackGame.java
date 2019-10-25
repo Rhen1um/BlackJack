@@ -113,6 +113,9 @@ public class BlackJackGame {
 
     }
 
+    public boolean dealerIsBlackJack(){
+        return dealer.getHand().isBlackJack();
+    }
 
 
 }
