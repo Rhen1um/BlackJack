@@ -95,7 +95,7 @@ public class GameView {
     /**
      * called when the bet value is bigger than the balance of the player.
      * It will tell the player how much they have now and ask for a new value.
-     *
+     * It makes sure that the new bet is no more than current balance.
      * @param currentBalance the current balance value that player holds.
      * @param index          use index to indicate user we are asking for which hand.
      * @return a new bet value.
@@ -103,7 +103,11 @@ public class GameView {
     public int printBetOutOfRangeAndGetANewBetValue(int currentBalance, int index) {
         System.out.println("You do not have enough money! Please enter a valid value again.");
         printTheBalanceOfPlayer(currentBalance);
-        return getBetValue(index);
+        int result = getBetValue(index);
+        while (result > currentBalance) {
+            result = getBetValue(index);
+        }
+        return result;
     }
 
     // TODO: if user skip the first hand...?
@@ -191,6 +195,7 @@ public class GameView {
 
     /**
      * print the result of each hand and print the current balance.
+     *
      * @param result
      * @param currentBalance
      */
