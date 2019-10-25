@@ -214,8 +214,13 @@ public class GameView {
         while (true) {
             String answer = s.next();
             if (answer.toLowerCase().equals("y") || answer.toLowerCase().equals("yes")) {
+                if(currentBalance < 100){
+                    System.out.println("☹︎ Sorry, you do not have enough money.");
+                    return false;
+                }
                 return true;
             } else if (answer.toLowerCase().equals("n") || answer.toLowerCase().equals("no")) {
+                System.out.println("Game Over.");
                 return false;
             } else {
                 System.out.println("Please input yes or no:");
