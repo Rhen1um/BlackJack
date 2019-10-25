@@ -50,6 +50,9 @@ public class BlackJackGame {
                     } else {
                         result = Result.DRAW;
                     }
+                    if (playerValue > 21){
+                        result = Result.LOSE;
+                    }
                 }
                 playerHands[i].setResult(result);
             }
@@ -154,6 +157,7 @@ public class BlackJackGame {
         }
         return moneyResults;
     }
+
 
 
 }
