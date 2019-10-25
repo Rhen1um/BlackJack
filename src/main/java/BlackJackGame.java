@@ -137,22 +137,23 @@ public class BlackJackGame {
         judgeResult();
         for (int i = 0; i < playerHands.length; i++){
             Result result = playerHands[i].getResult();
+            int previousResult = playerHands[i].getBet();
             int betResult = playerHands[i].getBet();
             switch (result){
                 case WIN:
                     if (playerHands[i].isBlackJack()){
-                        betResult += 2 * betResult;
-                    } else {
                         betResult += betResult;
+                    } else {
+                        betResult = 0;
                     }
                     break;
                 case LOSE:
-                    betResult = 0;
+                    betResult = -betResult;
                     break;
                 default:
                     break;
             }
-            player.addMoney(betResult);
+            player.addMoney(previousResult + betResult);
             moneyResults[i] = betResult;
         }
         return moneyResults;
