@@ -9,21 +9,62 @@ public class GameController {
 
     GameController() {
         gameView = new GameView();
-        this.gameView = gameView;
-    }
-
-    public void createGame() {
         blackJackGame = new BlackJackGame();
     }
 
     public void startGame() {
-        gameView.printWelcomeInformation();
+        while (true) {
+            this.playGame();
+        }
+    }
 
+    private void playGame() {
+        gameView.printWelcomeInformation();
+        gameView.printTheBalanceOfPlayer(blackJackGame.getPlayer().getMoney());
+        int numberOfHands = gameView.getNumberOfHands();
+        for(int i = 0; i < numberOfHands; i++) {
+            int bet = gameView.getBetValue(i + 1);
+            if(bet == 0) {
+                break;
+            }
+            if(!blackJackGame.addHand(bet)) {
+                bet = gameView.printBetOutOfRangeAndGetANewBetValue(blackJackGame.getPlayer().getMoney(), i + 1);
+                if(bet == 0) break;
+            }
+        }
+        blackJackGame.initDeal();
+        numberOfHands = blackJackGame.getPlayer().getHandCount();
+        PlayerHand[] playerHands = blackJackGame.getPlayer().getPlayerHands();
+        if(blackJackGame.dealerIsBlackJack()) {
+            gameView.printDealerGetsBlackJack();
+            gameView.printDealerHand(blackJackGame.getDealer().getHand().getCardsString());
+            for(int i = 0; i < numberOfHands; i++) {
+                gameView.printPlayerHand(playerHands[i].getCardsString());
+            }
+            //TODO
+
+        }
+        else {
+            for(int i = 0; i < numberOfHands; i++) {
+                String[] dealHandCards = blackJackGame.getDealer().getHand().getCardsString();
+                String[] playHandCards = playerHands[i].getCardsString();
+                gameView.printNewHand(dealHandCards, playHandCards, i + 1);
+                //TODO
+                boolean hit = true;
+                while (hit) {
+                    hit = gameView.getHitOrStay();
+                    blackJackGame.hitOrStay(hit);
+                    playHandCards = playerHands[i].getCardsString();
+                    gameView.printPlayerHand(playHandCards);
+                }
+            }
+            //TODO
+        }
     }
 
 
     public static void main(String[] args) {
-        GameController gamblingHouse = new GameController();
-        
+        GameController gameController = new GameController();
+        gameController.startGame();
     }
 }
