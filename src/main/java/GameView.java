@@ -62,6 +62,7 @@ public class GameView {
                 return i;
             } catch (InputMismatchException e) {
                 System.out.println("Please input a correct value.");
+                s.next(); // 缓冲区的数据还是没有被取出，所以要手动取一下
             }
         }
     }
@@ -87,6 +88,7 @@ public class GameView {
                 return i;
             } catch (InputMismatchException e) {
                 System.out.println("Please input a correct value.");
+                s.next();
             }
         }
     }
