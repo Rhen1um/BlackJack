@@ -22,7 +22,7 @@ public class GameView {
      * @param balance
      */
     public void printTheBalanceOfPlayer(int balance) {
-        System.out.println("      You have $" + balance + "now.");
+        System.out.println("You have $" + balance + " now.");
     }
 
     /**
@@ -31,7 +31,7 @@ public class GameView {
      * @param value how much player wins
      */
     private void printWinBet(int value) {
-        System.out.println("You win $" + value + ".");
+        System.out.println("      You win $" + value + ".");
     }
 
     /**
@@ -77,12 +77,11 @@ public class GameView {
     public int getBetValue(int index) {
         while (true) {
             try {
-                System.out.println("Enter bet for hand" + index + "(at least 100):");
+                System.out.println("Enter bet for hand " + index + "(at least 100):");
                 System.out.println("(You can input 0 to skip all left hands)");
                 int i = s.nextInt();
                 if (i < 0 || i != 0 && i < 100) {
                     System.out.println("Please input a non-negative value(at least 100).");
-                    System.out.println("(You can input 0 to skip all left hands)");
                     continue;
                 }
                 return i;
@@ -122,7 +121,8 @@ public class GameView {
      * @param handIndex   the index of handler
      */
     public void printNewHand(String[] dealerCards, String[] playerCards, int handIndex) {
-        System.out.println("Hand" + handIndex + "...");
+        System.out.println("=======================");
+        System.out.println("Hand " + handIndex + "...");
         System.out.println("Dealer:");
         System.out.println(" Hidden\n " + dealerCards[1]);
         printPlayerHand(playerCards);
@@ -139,12 +139,21 @@ public class GameView {
         }
     }
 
+    public void printPlayerHand(String[] playerCards, int handIndex) {
+        System.out.println("Player(Hand " + handIndex + "):");
+        for (String card : playerCards
+        ) {
+            System.out.println(" " + card);
+        }
+    }
+
     /**
      * Called ONLY WHEN dealer finished. Because it won't hidden thr first card.
      *
      * @param dealerCards a String array that contains the descriptions of cards of dealer.
      */
     public void printDealerHand(String[] dealerCards) {
+        System.out.println("-----------------------");
         System.out.println("Dealer:");
         for (String card : dealerCards
         ) {
@@ -177,7 +186,7 @@ public class GameView {
      * @param totalValueOfCards the total value of user's hand.
      */
     public void printPlayerBurst(int totalValueOfCards) {
-        System.out.println("Boom! You got " + totalValueOfCards + "points(larger than 21.)");
+        System.out.println("Boom! You got " + totalValueOfCards + " points(larger than 21)");
     }
 
     /**
@@ -214,7 +223,7 @@ public class GameView {
         while (true) {
             String answer = s.next();
             if (answer.toLowerCase().equals("y") || answer.toLowerCase().equals("yes")) {
-                if(currentBalance < 100){
+                if (currentBalance < 100) {
                     System.out.println("☹︎ Sorry, you do not have enough money.");
                     return false;
                 }

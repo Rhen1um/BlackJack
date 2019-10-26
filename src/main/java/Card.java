@@ -1,6 +1,6 @@
 /**
- * @author  JJAYCHEN
- * @date  2019-10-24 17:08
+ * @author JJAYCHEN
+ * @date 2019-10-24 17:08
  */
 
 /**
@@ -43,9 +43,10 @@ public class Card {
 
     /**
      * the same as toString()
+     *
      * @return a complete string represents the card.
      */
-    public String getCardDescription(){
+    public String getCardDescription() {
         return this.toString();
     }
 
@@ -78,6 +79,8 @@ public class Card {
      */
     public String getCardName() {
         switch (value) {
+            case 1:
+                return "Ace";
             case 11:
                 return "Jack";
             case 12:
@@ -95,7 +98,11 @@ public class Card {
      * @return the name of the suit of a card.
      */
     public String getSuitName() {
-        return suit.toString();
+        String s = suit.toString();
+        for (int i = s.length(); i < 7; i++) {
+            s = s + " ";
+        }
+        return s;
     }
 
     /**
