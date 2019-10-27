@@ -11,7 +11,7 @@ public class Dealer {
      */
     DealerHand hand;
 
-    public Dealer(){
+    public Dealer() {
 
     }
 
@@ -39,8 +39,7 @@ public class Dealer {
      * This should be called by BlackJackGame class.
      */
     public void autoHit(BlackJackGame blackJackGame) {
-        while (hand.calculateValue() < 17) {
-            // TODO: get a card from the Deck through BlackJackGame
+        while (hand.getCards().size() <= 5 && hand.calculateValue() < 17) {
             Card card = blackJackGame.getCard();
             hand.addCard(card);
         }
