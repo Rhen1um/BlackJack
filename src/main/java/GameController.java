@@ -7,16 +7,46 @@ public class GameController {
     private GameView gameView;
     private BlackJackGame blackJackGame;
 
+
+    /**
+     * Constructor of the class GameController.
+     * Make relation with gameView and blackJackGame.
+     */
     GameController() {
         gameView = new GameView();
         blackJackGame = new BlackJackGame();
     }
 
+
+    /**
+     * Process the whole game.
+     */
     public void startGame() {
-        while (this.playGame());
+        boolean isContinue = true;
+        while (isContinue) {
+            this.playGame();
+            isContinue = askIfContinue();
+        }
     }
 
-    private boolean playGame() {
+    /**
+     * Process the single game.
+     */
+    private void playGame() {
+        initGame();
+
+        int numberOfHands = blackJackGame.getPlayer().getHandCount();
+        PlayerHand[] playerHands = blackJackGame.getPlayer().getPlayerHands();
+
+        bodyGameHandler(numberOfHands, playerHands);
+        getResultOfGame(numberOfHands, playerHands);
+    }
+
+
+    /**
+     * Initialize the game: show welcome, get the number of hands and set every hand's bet.E
+     */
+    private void initGame() {
         gameView.printWelcomeInformation();
         gameView.printTheBalanceOfPlayer(blackJackGame.getPlayer().getMoney());
         int numberOfHands = gameView.getNumberOfHands();
@@ -31,25 +61,34 @@ public class GameController {
             }
         }
         blackJackGame.initDeal();
-        numberOfHands = blackJackGame.getPlayer().getHandCount();
-        PlayerHand[] playerHands = blackJackGame.getPlayer().getPlayerHands();
-        //庄家是bj
+    }
+
+
+    /**
+     * Handle the body of the single game.(hit for dealer and player.)
+     * @param numberOfHands: Number of player's hands.
+     * @param playerHands: The objects of player's hands.
+     */
+    private void bodyGameHandler(int numberOfHands, PlayerHand[] playerHands) {
+        // When the dealer is BlackJack.
         if(blackJackGame.dealerIsBlackJack()) {
             gameView.printDealerGetsBlackJack();
         }
-        //庄家不是bj
+
+        // When the dealer is not BlackJack.
         else {
             for(int i = 0; i < numberOfHands; i++) {
                 String[] dealHandCards = blackJackGame.getDealer().getHand().getCardsString();
                 String[] playHandCards = playerHands[i].getCardsString();
                 gameView.printNewHand(dealHandCards, playHandCards, i + 1);
-                //玩家是bj
+
+                // When the player in this hand is BlackJack.
                 if(playerHands[i].isBlackJack()) {
                     gameView.printPlayerGetsBlackJack();
                     continue;
                 }
 
-                //玩家不是bj
+                //When the player in this hand is not BlackJack.
                 boolean hit = true;
                 while (hit) {
                     hit = gameView.getHitOrStay();
@@ -61,28 +100,43 @@ public class GameController {
                         blackJackGame.getPlayer().stay();
                         break;
                     }
+                    if(playerHands[i].getCards().size() >= 5) {
+                        break;
+                    }
                 }
             }
+
             blackJackGame.getDealer().autoHit(blackJackGame);
         }
+    }
 
-
+    /**
+     * Use blackJackGame to get the game result and use gameView to print the result of the game.
+     * @param numberOfHands: Number of player's hands.
+     * @param playerHands: The objects of player's hands.
+     */
+    private void getResultOfGame(int numberOfHands, PlayerHand[] playerHands) {
         gameView.printDealerHand(blackJackGame.getDealer().getHand().getCardsString());
         for(int i = 0; i < numberOfHands; i++) {
             gameView.printPlayerHand(playerHands[i].getCardsString(),i+1);
         }
-
         int[] results = blackJackGame.getPlayerMoneyResults();
         gameView.printTheResultOfGame(results, blackJackGame.getPlayer().getMoney());
-
         blackJackGame.clear();
+    }
 
-        // 问一下是否继续
-        boolean isContinue = gameView.getWhetherStartNextGame(blackJackGame.getPlayer().getMoney());
-        return isContinue;
+    /**
+     * Use gameView to ask user if continue.
+     * @return : If user choose continue.
+     */
+    private boolean askIfContinue() {
+        return gameView.getWhetherStartNextGame(blackJackGame.getPlayer().getMoney());
     }
 
 
+    /**
+     * Main function of the whole Program. Create gameController and start the game.
+     */
     public static void main(String[] args) {
         GameController gameController = new GameController();
         gameController.startGame();
