@@ -69,11 +69,13 @@ public class GameController {
 
         gameView.printDealerHand(blackJackGame.getDealer().getHand().getCardsString());
         for(int i = 0; i < numberOfHands; i++) {
-            gameView.printPlayerHand(playerHands[i].getCardsString());
+            gameView.printPlayerHand(playerHands[i].getCardsString(),i+1);
         }
 
         int[] results = blackJackGame.getPlayerMoneyResults();
         gameView.printTheResultOfGame(results, blackJackGame.getPlayer().getMoney());
+
+        blackJackGame.clear();
 
         // 问一下是否继续
         boolean isContinue = gameView.getWhetherStartNextGame(blackJackGame.getPlayer().getMoney());
