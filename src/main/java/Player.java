@@ -76,7 +76,6 @@ public class Player {
 
 
     public void clearHands() {
-        playerHands = null;
         currentHand = 0;
         handCount = 0;
     }
