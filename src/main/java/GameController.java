@@ -58,6 +58,7 @@ public class GameController {
                     gameView.printPlayerHand(playHandCards);
                     if(playerHands[i].isBurst()) {
                         gameView.printPlayerBurst(playerHands[i].calculateValue());
+                        blackJackGame.getPlayer().stay();
                         break;
                     }
                 }
