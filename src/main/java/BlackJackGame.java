@@ -51,7 +51,13 @@ public class BlackJackGame {
                         result = Result.DRAW;
                     }
                     if (playerValue > 21){
-                        result = Result.LOSE;
+                        if (dealerValue > 21)
+                            result = Result.DRAW;
+                        else
+                            result = Result.LOSE;
+                    } else {
+                        if (dealerValue > 21)
+                            result = Result.WIN;
                     }
                 }
                 playerHands[i].setResult(result);
@@ -143,14 +149,13 @@ public class BlackJackGame {
                 case WIN:
                     if (playerHands[i].isBlackJack()){
                         betResult += betResult;
-                    } else {
-                        betResult = 0;
                     }
                     break;
                 case LOSE:
                     betResult = -betResult;
                     break;
                 default:
+                    betResult = 0;
                     break;
             }
             player.addMoney(previousResult + betResult);
