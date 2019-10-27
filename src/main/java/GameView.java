@@ -31,7 +31,7 @@ public class GameView {
      * @param value how much player wins
      */
     private void printWinBet(int value) {
-        System.out.println("      You win $" + value + ".");
+        System.out.println(" You win $" + value + ".");
     }
 
     /**
@@ -40,7 +40,8 @@ public class GameView {
      * @param value how much player loses
      */
     private void printLoseBet(int value) {
-        System.out.println("      You lose $" + value + ".");
+        value = -value;
+        System.out.println(" You lose $" + value + ".");
     }
 
     /**
