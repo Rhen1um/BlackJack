@@ -159,6 +159,13 @@ public class BlackJackGame {
         return moneyResults;
     }
 
-
+    /**
+     * clear dealer and player and shuffle the deck for next game
+     */
+    public void clear(){
+        deck.shuffle();
+        player.clearHands();
+        dealer.clearHand();
+    }
 
 }
