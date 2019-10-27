@@ -132,7 +132,7 @@ public class BlackJackGame {
     public int[] getPlayerMoneyResults(){
         int handCount = player.getHandCount();
         DealerHand dealerHand = (DealerHand) dealer.getHand();
-        PlayerHand[] playerHands = new PlayerHand[handCount];
+        PlayerHand[] playerHands = player.getPlayerHands();
         int[] moneyResults = new int[handCount];
         judgeResult();
         for (int i = 0; i < player.getHandCount(); i++){
