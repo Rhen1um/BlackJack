@@ -68,6 +68,7 @@ public class Player {
 
     /**
      * add a card in the current hand.
+     * TODO debug: currentHand在一手牌结束后应该+1, 否则会发到上一手
      */
     public void hit(Card card) {
         playerHands[currentHand].addCard(card);

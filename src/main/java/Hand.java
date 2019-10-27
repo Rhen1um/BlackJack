@@ -13,7 +13,7 @@ public class Hand {
      * constructor with no parameters.
      */
     public Hand(){
-        cards = new ArrayList<>();
+        cards = new ArrayList<Card>();
     }
 
     public Hand(List<Card> cards) {
@@ -74,7 +74,7 @@ public class Hand {
         if (cards.size() != 2) return false;
         int sum = calculateValue();
         return sum == 21;
-    }
+}
 
     /**
      * @author HavenTong
