@@ -117,9 +117,10 @@ public class GameController {
      * @param playerHands: The objects of player's hands.
      */
     private void getResultOfGame(int numberOfHands, PlayerHand[] playerHands) {
-        gameView.printDealerHand(blackJackGame.getDealer().getHand().getCardsString());
+        gameView.printDealerHand(blackJackGame.getDealer().getHand().getCardsString(),
+                blackJackGame.getDealer().getHand().getCondition());
         for(int i = 0; i < numberOfHands; i++) {
-            gameView.printPlayerHand(playerHands[i].getCardsString(),i+1);
+            gameView.printPlayerHand(playerHands[i].getCardsString(),i+1, playerHands[i].getCondition());
         }
         int[] results = blackJackGame.getPlayerMoneyResults();
         gameView.printTheResultOfGame(results, blackJackGame.getPlayer().getMoney());
