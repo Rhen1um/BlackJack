@@ -15,7 +15,7 @@ public class GameView {
 //        System.out.println("Welcome to BlackJack!");
 //        System.out.println("===================================================");
         System.out.println(
-                "    +------------------------------+ \n" +
+                        "    +------------------------------+ \n" +
                         "    | ╦ ╦┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐| \n" +
                         "    | ║║║├┤ │  │  │ ││││├┤    │ │ │| \n" +
                         "    | ╚╩╝└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘| \n" +
@@ -32,7 +32,7 @@ public class GameView {
      * @param balance
      */
     public void printTheBalanceOfPlayer(int balance) {
-        System.out.println("You have $" + balance + " now.");
+        System.out.println("You have $" + balance + "💰 now.");
     }
 
     /**
@@ -41,7 +41,7 @@ public class GameView {
      * @param value how much player wins
      */
     private void printWinBet(int value) {
-        System.out.println(" You win $" + value + ".");
+        System.out.println(" You win $" + value + ".🍺");
     }
 
     /**
@@ -51,7 +51,7 @@ public class GameView {
      */
     private void printLoseBet(int value) {
         value = -value;
-        System.out.println(" You lose $" + value + ".");
+        System.out.println(" You lose $" + value + ".😢");
     }
 
     /**
@@ -61,18 +61,18 @@ public class GameView {
      * @return the number of hands that the player wants to hold.
      */
     public int getNumberOfHands() {
-        System.out.println("How many hands would you hold?");
+        System.out.println("How many hands would you hold?🤔️");
         while (true) {
             try {
                 System.out.println("Enter the number of hands(no more than 5):");
                 int i = s.nextInt();
                 if (i <= 0 || i > 5) {
-                    System.out.println("Please input a value between 1 and 5.");
+                    System.out.println("Please input a value between 1 and 5.⚠️");
                     continue;
                 }
                 return i;
             } catch (InputMismatchException e) {
-                System.out.println("Please input a correct value.");
+                System.out.println("Please input a correct value.⚠️");
                 s.next(); // 缓冲区的数据还是没有被取出，所以要手动取一下
             }
         }
@@ -93,12 +93,12 @@ public class GameView {
                 System.out.println("(You can input 0 to skip all left hands)");
                 int i = s.nextInt();
                 if (i < 0 || i != 0 && i < 100) {
-                    System.out.println("Please input a non-negative value(at least 100).");
+                    System.out.println("Please input a non-negative value(at least 100).⚠️");
                     continue;
                 }
                 return i;
             } catch (InputMismatchException e) {
-                System.out.println("Please input a correct value.");
+                System.out.println("Please input a correct value.⚠️");
                 s.next();
             }
         }
@@ -163,9 +163,9 @@ public class GameView {
     public void printPlayerHand(String[] playerCards, int handIndex, String result) {
         printPlayerHand(playerCards, handIndex);
         if (result.equals("BlackJack")) {
-            System.out.println("☻ You got Black Jack!");
+            System.out.println("😄 You got Black Jack!");
         } else if (result.equals("Burst")) {
-            System.out.println("☹ Burst!");
+            System.out.println("😫 Burst!");
         } else {
             System.out.println("Sum: " + result);
         }
@@ -188,9 +188,9 @@ public class GameView {
     public void printDealerHand(String[] dealerCards, String result) {
         printDealerHand(dealerCards);
         if (result.equals("BlackJack")) {
-            System.out.println("Dealer got Black Jack!");
+            System.out.println("Dealer got Black Jack!🙀");
         } else if (result.equals("Burst")) {
-            System.out.println("Burst!");
+            System.out.println("Burst!🙀");
         } else {
             System.out.println("Sum: " + result);
         }
@@ -221,21 +221,21 @@ public class GameView {
      * @param totalValueOfCards the total value of user's hand.
      */
     public void printPlayerBurst(int totalValueOfCards) {
-        System.out.println("Boom! You got " + totalValueOfCards + " points(larger than 21)");
+        System.out.println("😫 Boom! You got " + totalValueOfCards + " points(larger than 21)");
     }
 
     /**
      * Called when player gets BlackJack.
      */
     public void printPlayerGetsBlackJack() {
-        System.out.println("☻ Congratulations! You got a BlackJack!");
+        System.out.println("😄 Congratulations! You got a BlackJack!");
     }
 
     /**
      * Called when dealer gets BlackJack.
      */
     public void printDealerGetsBlackJack() {
-        System.out.println("Dealer gets BlackJack!");
+        System.out.println("Dealer gets BlackJack!😺");
     }
 
     /**
@@ -254,17 +254,17 @@ public class GameView {
     }
 
     public boolean getWhetherStartNextGame(int currentBalance) {
-        System.out.println("Do you want another round?(y/n)");
+        System.out.println("Do you want another round?(y/n)🤔️");
         while (true) {
             String answer = s.next();
             if (answer.toLowerCase().equals("y") || answer.toLowerCase().equals("yes")) {
                 if (currentBalance < 100) {
-                    System.out.println("☹︎ Sorry, you do not have enough money.");
+                    System.out.println("︎😫 Sorry, you do not have enough money.");
                     return false;
                 }
                 return true;
             } else if (answer.toLowerCase().equals("n") || answer.toLowerCase().equals("no")) {
-                System.out.println("Game Over.");
+                System.out.println("Game Over.👋");
                 return false;
             } else {
                 System.out.println("Please input yes or no:");
