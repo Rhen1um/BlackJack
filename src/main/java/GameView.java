@@ -12,8 +12,15 @@ public class GameView {
      * print the welcome information. Called when the game starts.
      */
     public void printWelcomeInformation() {
-        System.out.println("Welcome to BlackJack!");
-        System.out.println("===================================================");
+//        System.out.println("Welcome to BlackJack!");
+//        System.out.println("===================================================");
+        System.out.println(
+                "╦ ╦┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐\n" +
+                "║║║├┤ │  │  │ ││││├┤    │ │ │\n" +
+                "╚╩╝└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘\n" +
+                "╔╗ ┬  ┌─┐┌─┐┬┌─   ╦┌─┐┌─┐┬┌─ \n" +
+                "╠╩╗│  ├─┤│  ├┴┐   ║├─┤│  ├┴┐ \n" +
+                "╚═╝┴─┘┴ ┴└─┘┴ ┴  ╚╝┴ ┴└─┘┴ ┴ ");
     }
 
     /**
