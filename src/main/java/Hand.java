@@ -74,7 +74,7 @@ public class Hand {
         if (cards.size() != 2) return false;
         int sum = calculateValue();
         return sum == 21;
-}
+    }
 
     /**
      * @author HavenTong
@@ -95,5 +95,23 @@ public class Hand {
         return cardString;
     }
 
-
+    /**
+     * get the Condition of the Hand
+     * @return
+     */
+    public String getCondition(){
+        boolean isBlackJack = isBlackJack();
+        String result = "";
+        if (isBlackJack){
+            result = "BlackJack";
+        } else {
+            int value = calculateValue();
+            if (value > 21){
+                result = "Burst";
+            } else {
+                result = String.valueOf(value);
+            }
+        }
+        return result;
+    }
 }
