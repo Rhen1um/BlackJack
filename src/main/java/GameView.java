@@ -15,12 +15,15 @@ public class GameView {
 //        System.out.println("Welcome to BlackJack!");
 //        System.out.println("===================================================");
         System.out.println(
-                "╦ ╦┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐\n" +
-                "║║║├┤ │  │  │ ││││├┤    │ │ │\n" +
-                "╚╩╝└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘\n" +
-                "╔╗ ┬  ┌─┐┌─┐┬┌─   ╦┌─┐┌─┐┬┌─ \n" +
-                "╠╩╗│  ├─┤│  ├┴┐   ║├─┤│  ├┴┐ \n" +
-                "╚═╝┴─┘┴ ┴└─┘┴ ┴  ╚╝┴ ┴└─┘┴ ┴ ");
+                "    +------------------------------+ \n" +
+                "    | ╦ ╦┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐| \n" +
+                "    | ║║║├┤ │  │  │ ││││├┤    │ │ │| \n" +
+                "    | ╚╩╝└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘| \n" +
+                "    | ╔╗ ┬  ┌─┐┌─┐┬┌─   ╦┌─┐┌─┐┬┌─ | \n" +
+                "    | ╠╩╗│  ├─┤│  ├┴┐   ║├─┤│  ├┴┐ | \n" +
+                "    | ╚═╝┴─┘┴ ┴└─┘┴ ┴  ╚╝┴ ┴└─┘┴ ┴ | \n" +
+                "    +------------------------------+ \n"
+        );
     }
 
     /**
@@ -131,7 +134,7 @@ public class GameView {
      * @param handIndex   the index of handler
      */
     public void printNewHand(String[] dealerCards, String[] playerCards, int handIndex) {
-        System.out.println("=======================");
+        System.out.println("=========================================");
         System.out.println("Hand " + handIndex + "...");
         System.out.println("Dealer:");
         System.out.println(" Hidden\n " + dealerCards[1]);
@@ -163,7 +166,7 @@ public class GameView {
      * @param dealerCards a String array that contains the descriptions of cards of dealer.
      */
     public void printDealerHand(String[] dealerCards) {
-        System.out.println("-----------------------");
+        System.out.println("-----------------------------------------");
         System.out.println("Dealer:");
         for (String card : dealerCards
         ) {
