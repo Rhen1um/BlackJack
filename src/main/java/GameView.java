@@ -16,13 +16,13 @@ public class GameView {
 //        System.out.println("===================================================");
         System.out.println(
                 "    +------------------------------+ \n" +
-                "    | ╦ ╦┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐| \n" +
-                "    | ║║║├┤ │  │  │ ││││├┤    │ │ │| \n" +
-                "    | ╚╩╝└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘| \n" +
-                "    | ╔╗ ┬  ┌─┐┌─┐┬┌─   ╦┌─┐┌─┐┬┌─ | \n" +
-                "    | ╠╩╗│  ├─┤│  ├┴┐   ║├─┤│  ├┴┐ | \n" +
-                "    | ╚═╝┴─┘┴ ┴└─┘┴ ┴  ╚╝┴ ┴└─┘┴ ┴ | \n" +
-                "    +------------------------------+ \n"
+                        "    | ╦ ╦┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐| \n" +
+                        "    | ║║║├┤ │  │  │ ││││├┤    │ │ │| \n" +
+                        "    | ╚╩╝└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘| \n" +
+                        "    | ╔╗ ┬  ┌─┐┌─┐┬┌─   ╦┌─┐┌─┐┬┌─ | \n" +
+                        "    | ╠╩╗│  ├─┤│  ├┴┐   ║├─┤│  ├┴┐ | \n" +
+                        "    | ╚═╝┴─┘┴ ┴└─┘┴ ┴  ╚╝┴ ┴└─┘┴ ┴ | \n" +
+                        "    +------------------------------+ \n"
         );
     }
 
@@ -160,6 +160,17 @@ public class GameView {
         }
     }
 
+    public void printPlayerHand(String[] playerCards, int handIndex, String result) {
+        printPlayerHand(playerCards, handIndex);
+        if (result.equals("BlackJack")) {
+            System.out.println("☻ You got Black Jack!");
+        } else if (result.equals("Burst")) {
+            System.out.println("☹︎ Burst!");
+        } else {
+            System.out.println("Sum: " + result);
+        }
+    }
+
     /**
      * Called ONLY WHEN dealer finished. Because it won't hidden thr first card.
      *
@@ -171,6 +182,17 @@ public class GameView {
         for (String card : dealerCards
         ) {
             System.out.println(" " + card);
+        }
+    }
+
+    public void printDealerHand(String[] dealerCards, String result) {
+        printDealerHand(dealerCards);
+        if (result.equals("BlackJack")) {
+            System.out.println("Dealer got Black Jack!");
+        } else if (result.equals("Burst")) {
+            System.out.println("Burst!");
+        } else {
+            System.out.println("Sum: " + result);
         }
     }
 
