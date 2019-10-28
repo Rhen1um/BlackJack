@@ -85,6 +85,7 @@ public class GameController {
                 // When the player in this hand is BlackJack.
                 if(playerHands[i].isBlackJack()) {
                     gameView.printPlayerGetsBlackJack();
+                    blackJackGame.getPlayer().stay();
                     continue;
                 }
 

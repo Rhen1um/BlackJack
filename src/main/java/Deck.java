@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Deck {
     private Card[] cards;
-    // 此处修改了类图中的属性名
     private boolean[] isValid;
 
     /**
