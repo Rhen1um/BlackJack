@@ -165,7 +165,7 @@ public class GameView {
         if (result.equals("BlackJack")) {
             System.out.println("☻ You got Black Jack!");
         } else if (result.equals("Burst")) {
-            System.out.println("☹︎ Burst!");
+            System.out.println("☹ Burst!");
         } else {
             System.out.println("Sum: " + result);
         }
@@ -228,7 +228,7 @@ public class GameView {
      * Called when player gets BlackJack.
      */
     public void printPlayerGetsBlackJack() {
-        System.out.println("☻☻☻☻☻ Congratulations! You got a BlackJack!");
+        System.out.println("☻ Congratulations! You got a BlackJack!");
     }
 
     /**
@@ -259,7 +259,7 @@ public class GameView {
             String answer = s.next();
             if (answer.toLowerCase().equals("y") || answer.toLowerCase().equals("yes")) {
                 if (currentBalance < 100) {
-                    System.out.println("☹︎☹︎☹︎ Sorry, you do not have enough money.");
+                    System.out.println("☹︎ Sorry, you do not have enough money.");
                     return false;
                 }
                 return true;
